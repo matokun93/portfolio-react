@@ -6,51 +6,25 @@ import Skills from '../Skills/Skills'
 
 const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
     return (
-        // <Routes basename='/portfolio-react'>
-        //     <Route path='/portfolio-react/' element={
-        //         <Home
-        //             darkImages={darkImages}
-        //         />
-        //     } />
-        //     <Route path='/portfolio-react/about' element={
-        //         <About
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //         />
-        //     } />
-        //     <Route path='/portfolio-react/portfolio' element={
-        //         <Portfolio
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //         />
-        //     } />
-        //     <Route path='/portfolio-react/skills' element={
-        //         <Skills
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //             darkImages={darkImages}
-        //         />
-        //     } />
-        // </Routes>
-        <Routes basename='/portfolio-react'>
-            <Route path='/' element={
+        <Routes>
+            <Route path='/portfolio-react/' element={
                 <Home
                     darkImages={darkImages}
                 />
             } />
-            <Route path='/about' element={
+            <Route path='/portfolio-react/about' element={
                 <About
                     openModal={openModal}
                     setOpenModal={setOpenModal}
                 />
             } />
-            <Route path='/portfolio' element={
+            <Route path='/portfolio-react/portfolio' element={
                 <Portfolio
                     openModal={openModal}
                     setOpenModal={setOpenModal}
                 />
             } />
-            <Route path='/skills' element={
+            <Route path='/portfolio-react/skills' element={
                 <Skills
                     openModal={openModal}
                     setOpenModal={setOpenModal}
@@ -58,6 +32,32 @@ const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
                 />
             } />
         </Routes>
+        // <Routes basename='/portfolio-react'>
+        //     <Route path='/' element={
+        //         <Home
+        //             darkImages={darkImages}
+        //         />
+        //     } />
+        //     <Route path='/about' element={
+        //         <About
+        //             openModal={openModal}
+        //             setOpenModal={setOpenModal}
+        //         />
+        //     } />
+        //     <Route path='/portfolio' element={
+        //         <Portfolio
+        //             openModal={openModal}
+        //             setOpenModal={setOpenModal}
+        //         />
+        //     } />
+        //     <Route path='/skills' element={
+        //         <Skills
+        //             openModal={openModal}
+        //             setOpenModal={setOpenModal}
+        //             darkImages={darkImages}
+        //         />
+        //     } />
+        // </Routes>
     )
 }
 
