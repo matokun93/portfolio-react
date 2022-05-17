@@ -7,24 +7,24 @@ import Skills from '../Skills/Skills'
 const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
     return (
         <Routes>
-            <Route path='/' element={
+            <Route path='/portfolio-react/' element={
                 <Home
                     darkImages={darkImages}
                 />
             } />
-            <Route path='/about' element={
+            <Route path='/portfolio-react/about' element={
                 <About
                     openModal={openModal}
                     setOpenModal={setOpenModal}
                 />
             } />
-            <Route path='/portfolio' element={
+            <Route path='/portfolio-react/portfolio' element={
                 <Portfolio
                     openModal={openModal}
                     setOpenModal={setOpenModal}
                 />
             } />
-            <Route path='/skills' element={
+            <Route path='/portfolio-react/skills' element={
                 <Skills
                     openModal={openModal}
                     setOpenModal={setOpenModal}
