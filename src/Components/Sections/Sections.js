@@ -6,7 +6,7 @@ import Skills from '../Skills/Skills'
 
 const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
     return (
-        <Routes>
+        <Routes basename='/portfolio-react'>
             <Route path='/portfolio-react/' element={
                 <Home
                     darkImages={darkImages}
