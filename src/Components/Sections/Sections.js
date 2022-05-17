@@ -32,7 +32,7 @@ const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
         //         />
         //     } />
         // </Routes>
-        <Routes >
+        <Routes basename='/portfolio-react'>
             <Route path='/' element={
                 <Home
                     darkImages={darkImages}
