@@ -8,7 +8,7 @@ const NavBarBottom = () => {
         <nav className='bottom-nav'>
             <ul>
                 <li>
-                    <NavLink to='/'>
+                    <NavLink to='/portfolio-react/'>
                         <FontAwesomeIcon icon={faHome} />
                     </NavLink>
                     <div className="pointer-container">
@@ -16,19 +16,19 @@ const NavBarBottom = () => {
                     </div>
                 </li>
                 <li>
-                    <NavLink to='/portfolio'>Portafolio</NavLink>
+                    <NavLink to='/portfolio-react/portfolio'>Portafolio</NavLink>
                     <div className="pointer-container">
                         <FontAwesomeIcon className='pointer' icon={faCaretUp} />
                     </div>
                 </li>
                 <li>
-                    <NavLink to='/skills'>Habilidades</NavLink>
+                    <NavLink to='/portfolio-react/skills'>Habilidades</NavLink>
                     <div className="pointer-container">
                         <FontAwesomeIcon className='pointer' icon={faCaretUp} />
                     </div>
                 </li>
                 <li>
-                    <NavLink to='/about'>Sobre mí</NavLink>
+                    <NavLink to='/portfolio-react/about'>Sobre mí</NavLink>
                     <div className="pointer-container">
                         <FontAwesomeIcon className='pointer' icon={faCaretUp} />
                     </div>
