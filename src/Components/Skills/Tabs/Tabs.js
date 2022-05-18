@@ -1,20 +1,11 @@
-import { useState } from 'react'
+import { useState, useCallback, memo, useMemo } from 'react'
 import './Tabs.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCode, faUser, faDatabase, faCube, faMobileScreenButton, faPaintBrush, faBrain, faAward, faBook, faPersonHiking, faFlagUsa, faForwardFast } from '@fortawesome/free-solid-svg-icons'
 import { faReact, faJsSquare, faCss3, faGitAlt, faNodeJs } from '@fortawesome/free-brands-svg-icons'
 
-const Tabs = ({ setOpenModal }) => {
-    const createModal = (text, title, icon) => {
-        setOpenModal({
-            open: true,
-            text: text,
-            title: title,
-            icon: icon
-        })
-    }
-
-    const techSkills = [
+const Tabs = memo(({ setOpenModal }) => {
+    const techSkills = useMemo(() => [
         {
             icon: faFlagUsa,
             name: 'Inglés',
@@ -65,9 +56,8 @@ const Tabs = ({ setOpenModal }) => {
             name: 'Blender',
             description: 'En mi tiempo libre aprendí a utilizar el software Blender para desarrollo 3D (modelado 3D, rigging, animaciones, texturing, etc). Lo utilizo para hacer arte y assets de videojuegos en mi tiempo libre, pero también me ha servido para incluir modelos 3D en aplicaciones (todas las imagenes de esta página personal fueron hechas por mí, utilizando Blender, y un poco de Photoshop).'
         }
-    ]
-
-    const generalSkills = [
+    ], [])
+    const generalSkills = useMemo(() => [
         {
             icon: faBook,
             name: 'Rápido Aprendizaje',
@@ -94,13 +84,21 @@ const Tabs = ({ setOpenModal }) => {
             name: 'Perfeccionismo',
             description: 'Me caracterizo por ser perfeccionista, las cosas mal hechas generan un descontento automático en mí, y por lo mismo acostumbro a estar buscando constantemente oportunidades de mejoras. Creo que con el pasar del tiempo he aprendido a pulir esta característica, y saber cuando las cosas están lo suficientemente refinadas, para no perder tiempo en detalles.'
         },
-    ]
-
+    ], [])
     const [active, setActive] = useState(1)
 
-    const chooseTab = (tabIndex) => {
+    const createModal = useCallback((text, title, icon) => {
+        setOpenModal({
+            open: true,
+            text: text,
+            title: title,
+            icon: icon
+        })
+    }, [setOpenModal])
+
+    const chooseTab = useCallback((tabIndex) => {
         setActive(tabIndex)
-    }
+    }, [setActive])
 
     return (
         <div className="tabs-container">
@@ -116,7 +114,7 @@ const Tabs = ({ setOpenModal }) => {
             </div>
             <div className="tab-bodies">
                 <div className={active === 1 ? 'tab-content active-content tech-tab-content' : 'hidden-content'}>
-                    {techSkills.map(skill => {
+                    {useMemo(() => techSkills.map(skill => {
                         return (
                             <div key={skill.name} className="tech-skill" onClick={() => createModal(skill.description, skill.name, skill.icon)}>
                                 <div className="skillIcon">
@@ -127,10 +125,10 @@ const Tabs = ({ setOpenModal }) => {
                                 </div>
                             </div>
                         )
-                    })}
+                    }), [techSkills])}
                 </div>
                 <div className={active === 2 ? 'tab-content active-content general-tab-content' : 'hidden-content'}>
-                    {generalSkills.map(skill => {
+                    {useMemo(() => generalSkills.map(skill => {
                         return (
                             <div key={skill.name} className="general-skill" onClick={() => createModal(skill.description, skill.name, skill.icon)}>
                                 <div className='general-skill-subcontainer'>
@@ -143,11 +141,11 @@ const Tabs = ({ setOpenModal }) => {
                                 </div>
                             </div>
                         )
-                    })}
+                    }), [generalSkills])}
                 </div>
             </div>
         </div>
     )
-}
+})
 
 export default Tabs

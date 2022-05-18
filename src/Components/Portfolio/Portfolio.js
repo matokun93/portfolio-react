@@ -1,5 +1,5 @@
 import Project from './Project/Project'
-import { useState } from 'react'
+import { useState, useMemo, useCallback, memo } from 'react'
 import './Portfolio.css'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,8 +12,8 @@ import cover6 from '../../Assets/shopping_cart.png'
 import cover7 from '../../Assets/images_search.png'
 import cover8 from '../../Assets/calculadora.png'
 
-const Portfolio = ({ openModal, setOpenModal }) => {
-    const projects = [
+const Portfolio = memo(({ openModal, setOpenModal }) => {
+    const projects = useMemo(() => [
         {
             cover: cover1,
             id: 1,
@@ -78,27 +78,26 @@ const Portfolio = ({ openModal, setOpenModal }) => {
             tools: ['Blender'],
             link: 'https://matokun93.github.io/blender-gallery/'
         },
-    ]
-
+    ], [])
     const [animation, setAnimation] = useState('')
-
     const [active, setActive] = useState(1)
 
     const total = projects.length
 
-    const nextProject = () => {
+    const nextProject = useCallback(() => {
         setActive(active !== total ? active + 1 : 1)
         setAnimation('slideLeft')
-    }
-    const previousProject = () => {
+    }, [active, setActive, setAnimation, total])
+
+    const previousProject = useCallback(() => {
         setActive(active !== 1 ? active - 1 : total)
         setAnimation('slideRight')
-    }
+    }, [active, setActive, setAnimation, total])
 
     return (
         <div className='portfolio-section'>
             <button className='arrow-button' onClick={() => previousProject()}><FontAwesomeIcon icon={faAngleLeft} /></button>
-            {projects.map(card => {
+            {useMemo(() => projects.map(card => {
                 return (
                     < Project
                         key={card.id}
@@ -115,10 +114,10 @@ const Portfolio = ({ openModal, setOpenModal }) => {
                         animation={animation}
                     />
                 )
-            })}
+            }), [projects, active])}
             <button className='arrow-button' onClick={() => nextProject()}><FontAwesomeIcon icon={faAngleRight} /></button>
         </div>
     )
-}
+})
 
 export default Portfolio

@@ -1,7 +1,7 @@
+import { memo } from 'react'
 import './Project.css'
 
-
-const Project = ({ id, name, cover, description, tools, link, active, setOpenModal, animation }) => {
+const Project = memo(({ id, name, cover, description, tools, link, active, setOpenModal, animation }) => {
     const createModal = (text) => {
         setOpenModal({
             open: true,
@@ -42,6 +42,6 @@ const Project = ({ id, name, cover, description, tools, link, active, setOpenMod
             </div>
         </div>
     )
-}
+})
 
 export default Project

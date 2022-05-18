@@ -1,22 +1,22 @@
 import { faClapperboard, faCube, faFutbol, faGamepad, faGuitar } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import './About.css'
 import Interest from './Interest/Interest'
 import InterestDescription from './InterestDescription/InterestDescription'
 
-const About = () => {
+const About = memo(() => {
     const [active, setActive] = useState(1)
     const [activeCard, setActiveCard] = useState(1)
 
-    const showCardContent = (id) => {
+    const showCardContent = useCallback((id) => {
         setActiveCard(id)
-    }
+    }, [setActiveCard])
 
-    const changeActive = (id) => {
+    const changeActive = useCallback((id) => {
         setActive(id)
-    }
+    }, [setActive])
 
-    const interests = [
+    const interests = useMemo(() => [
         {
             id: 1,
             name: 'Fútbol',
@@ -47,10 +47,9 @@ const About = () => {
             icon: faClapperboard,
             description: '- Película: Lord of the Rings (las 3), The Prestige (cualquiera de Nolan).\n\n- Serie: Game of Thrones (hasta la temporada 6), Breaking Bad.\n\n- Anime: Hunter x Hunter, Shingeki.'
         },
-    ]
+    ], [])
 
     return (
-
         <div className={activeCard === 1 ? 'about-section' : 'about-section inverted-about-section'}>
             <div className={activeCard === 1 ? 'active-card about-text-container' : 'about-text-container inactive-card'} onClick={() => showCardContent(1)}>
                 <h1>Sobre mí</h1>
@@ -66,7 +65,7 @@ const About = () => {
             <div className={active && activeCard === 2 ? 'interests-container interest-active active-card' : 'interests-container inactive-card'} onClick={() => showCardContent(2)} >
                 <h1>Intereses</h1>
                 <div className='interests-icons'>
-                    {interests.map((interest) => {
+                    {useMemo(() => interests.map((interest) => {
                         return (
                             <div onClick={() => changeActive(interest.id)} key={interest.id}>
                                 <Interest
@@ -78,7 +77,7 @@ const About = () => {
                                 />
                             </div>
                         )
-                    })}
+                    }), [interests])}
                 </div>
                 <div className='interests-descriptions'>
                     {interests.map((interest) => {
@@ -95,6 +94,6 @@ const About = () => {
             </div>
         </div>
     )
-}
+})
 
 export default About

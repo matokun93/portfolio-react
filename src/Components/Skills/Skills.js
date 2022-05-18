@@ -2,9 +2,9 @@ import Tabs from './Tabs/Tabs'
 import './Skills.css'
 import skillsImageLight from '../../Assets/light_skills.png'
 import skillsImageDark from '../../Assets/dark_skills.png'
-import React from "react";
+import { memo } from "react";
 
-const Skills = ({ openModal, setOpenModal, darkImages }) => {
+const Skills = memo(({ openModal, setOpenModal, darkImages }) => {
     return (
         <div className='skills-section'>
             <div className="tabs-section">
@@ -22,6 +22,6 @@ const Skills = ({ openModal, setOpenModal, darkImages }) => {
             </div>
         </div>
     )
-}
+})
 
 export default Skills

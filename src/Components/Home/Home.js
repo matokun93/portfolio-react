@@ -1,4 +1,4 @@
-import { useState, memo, useEffect, useCallback } from 'react'
+import { useState, memo, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import useCopyToClipboard from '../../CustomHooks/useCopyToClipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -15,14 +15,12 @@ const Home = memo(({ darkImages }) => {
     const [mailModal, setMailModal] = useState(false)
     const [phoneModal, setPhoneModal] = useState(false)
 
-    const showMailModal = useCallback(
-        (show) => {
-            setMailModal(show)
-            if (show === false) {
-                setSuccess(false)
-            }
-        }, [setSuccess])
-
+    const showMailModal = useCallback((show) => {
+        setMailModal(show)
+        if (show === false) {
+            setSuccess(false)
+        }
+    }, [setSuccess])
 
     const showPhoneModal = useCallback((show) => {
         setPhoneModal(show)
@@ -30,8 +28,6 @@ const Home = memo(({ darkImages }) => {
             setSuccess(false)
         }
     }, [setSuccess])
-
-
 
     const transitionMail = useTransition(mailModal, {
         from: { display: 'none', opacity: 0 },
@@ -44,15 +40,6 @@ const Home = memo(({ darkImages }) => {
         enter: { display: 'flex', opacity: 1 },
         leave: { display: 'none', opacity: 0 }
     })
-
-    useEffect(() => {
-        console.log('actualizando transition mail');
-    }, [transitionMail])
-
-
-    useEffect(() => {
-        console.log('actualizando transition phone');
-    }, [transitionPhone])
 
     return (
         <div className='home-section'>

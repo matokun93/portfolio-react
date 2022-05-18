@@ -33,32 +33,6 @@ const Sections = memo(({ openModal, setOpenModal, darkImages, setDarkImages }) =
                 />
             } />
         </Routes>
-        // <Routes basename='/portfolio-react'>
-        //     <Route path='/' element={
-        //         <Home
-        //             darkImages={darkImages}
-        //         />
-        //     } />
-        //     <Route path='/about' element={
-        //         <About
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //         />
-        //     } />
-        //     <Route path='/portfolio' element={
-        //         <Portfolio
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //         />
-        //     } />
-        //     <Route path='/skills' element={
-        //         <Skills
-        //             openModal={openModal}
-        //             setOpenModal={setOpenModal}
-        //             darkImages={darkImages}
-        //         />
-        //     } />
-        // </Routes>
     )
 })
 

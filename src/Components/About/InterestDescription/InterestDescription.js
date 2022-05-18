@@ -1,6 +1,7 @@
+import { memo } from 'react'
 import './InterestDescription.css'
 
-const InterestDescription = ({ active, id, description }) => {
+const InterestDescription = memo(({ active, id, description }) => {
     return (
         <div className={id === active ? 'description-container' : 'hidden-description'}>
             <p>
@@ -8,6 +9,6 @@ const InterestDescription = ({ active, id, description }) => {
             </p>
         </div>
     )
-}
+})
 
 export default InterestDescription
