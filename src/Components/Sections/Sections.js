@@ -3,8 +3,9 @@ import Home from '../Home/Home'
 import About from '../About/About'
 import Portfolio from '../Portfolio/Portfolio'
 import Skills from '../Skills/Skills'
+import { memo } from 'react'
 
-const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
+const Sections = memo(({ openModal, setOpenModal, darkImages, setDarkImages }) => {
     return (
         <Routes basename='/portfolio-react'>
             <Route path='/portfolio-react/' element={
@@ -59,6 +60,6 @@ const Sections = ({ openModal, setOpenModal, darkImages, setDarkImages }) => {
         //     } />
         // </Routes>
     )
-}
+})
 
 export default Sections

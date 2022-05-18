@@ -1,9 +1,9 @@
-import { useRef } from 'react'
+import { useRef, memo } from 'react'
 import useClickOutside from '../../CustomHooks/useClickOutside'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './Modal.css'
 
-const Modal = ({ openModal, setOpenModal }) => {
+const Modal = memo(({ openModal, setOpenModal }) => {
     const modalRef = useRef()
 
     useClickOutside(modalRef, () => {
@@ -29,6 +29,6 @@ const Modal = ({ openModal, setOpenModal }) => {
             </div>
         </div>
     )
-}
+})
 
 export default Modal

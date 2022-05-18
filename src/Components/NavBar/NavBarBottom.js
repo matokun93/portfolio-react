@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretUp, faHome } from '@fortawesome/free-solid-svg-icons'
 import './NavBarBottom.css'
 
-const NavBarBottom = () => {
+const NavBarBottom = memo(() => {
     return (
         <nav className='bottom-nav'>
             <ul>
@@ -36,6 +37,6 @@ const NavBarBottom = () => {
             </ul>
         </nav>
     )
-}
+})
 
 export default NavBarBottom

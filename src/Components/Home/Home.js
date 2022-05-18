@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, memo, useEffect, useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import useCopyToClipboard from '../../CustomHooks/useCopyToClipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,24 +10,28 @@ import homeImageLight from '../../Assets/home_light.png'
 import homeImageDark from '../../Assets/home_dark.png'
 import './Home.css'
 
-const Home = ({ darkImages }) => {
+const Home = memo(({ darkImages }) => {
     const [copyToClipboard, { success, setSuccess }] = useCopyToClipboard()
     const [mailModal, setMailModal] = useState(false)
     const [phoneModal, setPhoneModal] = useState(false)
 
-    const showMailModal = (show) => {
-        setMailModal(show)
-        if (show === false) {
-            setSuccess(false)
-        }
-    }
+    const showMailModal = useCallback(
+        (show) => {
+            setMailModal(show)
+            if (show === false) {
+                setSuccess(false)
+            }
+        }, [setSuccess])
 
-    const showPhoneModal = (show) => {
+
+    const showPhoneModal = useCallback((show) => {
         setPhoneModal(show)
         if (show === false) {
             setSuccess(false)
         }
-    }
+    }, [setSuccess])
+
+
 
     const transitionMail = useTransition(mailModal, {
         from: { display: 'none', opacity: 0 },
@@ -40,6 +44,15 @@ const Home = ({ darkImages }) => {
         enter: { display: 'flex', opacity: 1 },
         leave: { display: 'none', opacity: 0 }
     })
+
+    useEffect(() => {
+        console.log('actualizando transition mail');
+    }, [transitionMail])
+
+
+    useEffect(() => {
+        console.log('actualizando transition phone');
+    }, [transitionPhone])
 
     return (
         <div className='home-section'>
@@ -139,10 +152,9 @@ const Home = ({ darkImages }) => {
                         <NavLink to='portfolio'>Ver Portafolio</NavLink>
                     </button>
                 </div>
-
             </div>
         </div>
     )
-}
+})
 
 export default Home

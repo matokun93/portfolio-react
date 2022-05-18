@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMoon, faSun, faCaretUp, faHome } from '@fortawesome/free-solid-svg-icons'
@@ -5,7 +6,7 @@ import './NavBar.css'
 import Logo from '../../Assets/logo matokun3.png'
 import useDarkMode from '../../CustomHooks/useDarkMode'
 
-const NavBar = (darkImages, setDarkImages) => {
+const NavBar = memo((darkImages, setDarkImages) => {
 
     const changeTheme = () => {
         setDarkMode(darkMode => !darkMode)
@@ -106,6 +107,6 @@ const NavBar = (darkImages, setDarkImages) => {
         //     </div>
         // </nav>
     )
-}
+})
 
 export default NavBar
